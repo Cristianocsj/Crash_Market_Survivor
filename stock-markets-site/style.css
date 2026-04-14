@@ -1,0 +1,241 @@
+:root {
+    --fundo: #f5f7fa;
+    --superficie: #ffffff;
+    --texto: #1f2533;
+    --texto-suave: #5b6472;
+    --linha: #e3e8ef;
+    --azul: #6ea8de;
+    --rosa: #e5bcc4;
+    --amarelo: #efbd32;
+    --lilas: #aaa3df;
+    --verde: #9cc55d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--texto);
+    background: var(--fundo);
+}
+
+.container {
+    width: min(1120px, 92%);
+    margin: 0 auto;
+}
+
+.topo {
+    background: #f2f2f2;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.topo-conteudo {
+    min-height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.marca-logo {
+    width: clamp(100px, 12vw, 160px);
+    height: auto;
+    display: block;
+}
+
+.marca-titulo {
+    margin: 0;
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.marca-subtitulo {
+    margin: 4px 0 0;
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+}
+
+.navegacao ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.navegacao a {
+    text-decoration: none;
+    color: var(--texto);
+    font-weight: 600;
+}
+
+.navegacao a:hover {
+    color: #2563eb;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 28px;
+    align-items: center;
+    padding: 42px 0 32px;
+}
+
+.hero-texto h1 {
+    margin: 0 0 12px;
+    font-size: clamp(1.9rem, 4vw, 3.3rem);
+    line-height: 1.08;
+}
+
+.hero-texto p {
+    margin: 0;
+    max-width: 620px;
+    color: var(--texto-suave);
+    font-size: 1.12rem;
+    line-height: 1.55;
+}
+
+.hero-ilustracao {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-imagem {
+    width: min(500px, 100%);
+    max-height: 360px;
+    border-radius: 16px;
+    object-fit: cover;
+    border: 1px solid var(--linha);
+    box-shadow: 0 8px 20px rgba(15, 24, 42, 0.12);
+}
+
+.secao-videos {
+    padding: 10px 0 8px;
+}
+
+.secao-videos h2,
+.aviso h2 {
+    margin: 0 0 18px;
+    font-size: 2rem;
+}
+
+.grade-videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.card-video {
+    margin: 0;
+    background: var(--superficie);
+    border: 1px solid var(--linha);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(15, 24, 42, 0.08);
+}
+
+.thumb {
+    min-height: 150px;
+    display: grid;
+    place-items: center;
+    color: rgba(20, 20, 20, 0.72);
+    font-weight: 700;
+    border-bottom: 1px solid var(--linha);
+}
+
+.placeholder-a { background: var(--azul); }
+.placeholder-b { background: var(--rosa); }
+.placeholder-c { background: var(--amarelo); }
+.placeholder-d { background: var(--lilas); }
+
+.card-conteudo {
+    padding: 14px 14px 16px;
+}
+
+.card-conteudo h3 {
+    margin: 0 0 8px;
+    font-size: 1.35rem;
+}
+
+.card-conteudo a {
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: 700;
+}
+
+.aviso {
+    margin: 26px 0 36px;
+    background: var(--superficie);
+    border: 1px solid var(--linha);
+    border-left: 6px solid var(--verde);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.aviso p {
+    margin: 0;
+    color: var(--texto-suave);
+    font-size: 1.05rem;
+}
+
+.rodape {
+    background: var(--superficie);
+    border-top: 1px solid var(--linha);
+}
+
+.rodape p {
+    margin: 0;
+    padding: 20px 0;
+    color: var(--texto-suave);
+}
+
+@media (max-width: 900px) {
+    .topo-conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 0;
+    }
+
+    .marca {
+        width: 100%;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 24px;
+    }
+
+    .secao-videos h2,
+    .aviso h2 {
+        font-size: 1.65rem;
+    }
+}
+
+@media (max-width: 540px) {
+    .marca {
+        gap: 10px;
+    }
+
+    .marca-logo {
+        width: 110px;
+    }
+
+    .navegacao ul {
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .card-conteudo h3 {
+        font-size: 1.15rem;
+    }
+}
