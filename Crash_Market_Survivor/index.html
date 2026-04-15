@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crash Market Survivor</title>
+    <style>
+        :root {
+            --bg: #08162a;
+            --panel: #10233f;
+            --panel-soft: #153056;
+            --line: rgba(255, 255, 255, 0.1);
+            --text: #edf5ff;
+            --muted: #a7bdd8;
+            --accent: #38c79b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(56, 199, 155, 0.18), transparent 22%),
+                linear-gradient(180deg, #091427 0%, #08162a 100%);
+            color: var(--text);
+        }
+
+        .wrap {
+            width: min(1100px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 48px 0 72px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .panel {
+            background: rgba(16, 35, 63, 0.84);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+        }
+
+        .tag {
+            display: inline-flex;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(56, 199, 155, 0.12);
+            color: #7be0bf;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        h1, h2 {
+            margin-top: 0;
+        }
+
+        p, li {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 18px;
+            border-radius: 14px;
+            border: 0;
+            background: linear-gradient(135deg, #35c49a, #32bf99);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .button.secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .stats {
+            display: grid;
+            gap: 14px;
+        }
+
+        .stat {
+            padding: 18px;
+            border-radius: 18px;
+            background: var(--panel-soft);
+            border: 1px solid var(--line);
+        }
+
+        .stat strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.4rem;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        ol {
+            padding-left: 22px;
+            margin: 0;
+        }
+
+        @media (max-width: 800px) {
+            .hero,
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="wrap">
+        <section class="hero">
+            <article class="panel">
+                <span class="tag">Protótipo jogável</span>
+                <h1>Crash Market Survivor</h1>
+                <p>
+                    Esta é a landing do jogo dentro do projeto. Ela funciona como ponto de entrada enquanto a versão
+                    completa ainda está sendo construída.
+                </p>
+                <p>
+                    A ideia central é sobreviver a choques do mercado, administrar risco e tomar decisões sob pressão
+                    sem fugir da lógica de educação financeira.
+                </p>
+                <div class="actions">
+                    <a class="button" href="../stock-markets-site/index2.html">Voltar para o site</a>
+                    <a class="button secondary" href="#ranking">Ver ranking</a>
+                </div>
+            </article>
+
+            <aside class="panel">
+                <h2>Rodada de exemplo</h2>
+                <div class="stats">
+                    <div class="stat">
+                        <strong>R$ 125.000</strong>
+                        <span>Carteira inicial</span>
+                    </div>
+                    <div class="stat">
+                        <strong>-8,4%</strong>
+                        <span>Queda causada por notícia macroeconômica</span>
+                    </div>
+                    <div class="stat">
+                        <strong>Rebalancear</strong>
+                        <span>Ação sugerida para preservar caixa</span>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <section class="sections">
+            <article class="panel">
+                <h2>Objetivos do jogo</h2>
+                <ul>
+                    <li>Interpretar eventos de mercado rapidamente.</li>
+                    <li>Equilibrar retorno e proteção da carteira.</li>
+                    <li>Treinar disciplina emocional em cenários de queda.</li>
+                </ul>
+            </article>
+
+            <article class="panel" id="ranking">
+                <h2>Ranking semanal</h2>
+                <ol>
+                    <li>Ana Trader - 9.420 pts</li>
+                    <li>Lucas Hedge - 8.975 pts</li>
+                    <li>Marina Value - 8.610 pts</li>
+                    <li>Caio Bull - 8.140 pts</li>
+                    <li>Sofia Risk - 7.890 pts</li>
+                </ol>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

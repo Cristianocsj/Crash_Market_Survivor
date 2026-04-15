@@ -18,19 +18,29 @@
                         <p class="marca-subtitulo">Educação financeira e mercado de ações</p>
                     </div>
                 </div>
-                <nav class="navegacao" aria-label="Navegação principal">
+
+                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav class="navegacao" id="menu-principal" aria-label="Navegação principal">
                     <ul>
                         <li><a href="#home">Home</a></li>
+                        <li><a href="#beneficios">Benefícios</a></li>
                         <li><a href="#videos">Vídeos</a></li>
+                        <li><a href="#jogo">Jogo</a></li>
+                        <li><a href="#contato">Contato</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
 
         <main>
-            <section id="home" class="hero">
+            <section id="home" class="hero secao-monitorada">
                 <div class="container hero-conteudo">
-                    <article class="hero-texto">
+                    <article class="hero-texto reveal">
                         <span class="hero-tag">100% gratuito e aberto</span>
                         <h1>
                             Aprenda mercado financeiro
@@ -40,20 +50,23 @@
                             Conteúdo aberto e gratuito sobre investimentos, renda variável e educação financeira.
                             Dê o primeiro passo rumo à sua independência financeira.
                         </p>
-                        <a class="hero-cta" href="#beneficios">Começar agora <span aria-hidden="true">→</span></a>
+                        <div class="hero-acoes">
+                            <a class="hero-cta" href="#beneficios">Começar agora <span aria-hidden="true">→</span></a>
+                            <a class="hero-link" href="#videos">Assistir aulas</a>
+                        </div>
                     </article>
                 </div>
             </section>
 
-            <section id="beneficios" class="sessao sessao-clara">
+            <section id="beneficios" class="sessao sessao-clara secao-monitorada">
                 <div class="container">
-                    <div class="titulo-bloco">
+                    <div class="titulo-bloco reveal">
                         <h2>Por que aprender conosco?</h2>
                         <p>Uma plataforma completa para sua jornada de educação financeira.</p>
                     </div>
 
-                    <section class="grade-beneficios" aria-label="Benefícios da plataforma">
-                        <article class="card-beneficio">
+                    <section class="grade-beneficios">
+                        <article class="card-beneficio reveal">
                             <div class="icone-quadro" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M4 5h7v14H4z"></path>
@@ -64,7 +77,7 @@
                             <p>Aulas pensadas para quem está começando do zero no mercado financeiro.</p>
                         </article>
 
-                        <article class="card-beneficio">
+                        <article class="card-beneficio reveal">
                             <div class="icone-quadro" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"></path>
@@ -74,7 +87,7 @@
                             <p>Aprenda a proteger seu capital com estratégias de risco inteligentes.</p>
                         </article>
 
-                        <article class="card-beneficio">
+                        <article class="card-beneficio reveal">
                             <div class="icone-quadro" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M5 19V8"></path>
@@ -88,7 +101,7 @@
                             <p>Fundamentos e análise técnica para tomar melhores decisões.</p>
                         </article>
 
-                        <article class="card-beneficio">
+                        <article class="card-beneficio reveal">
                             <div class="icone-quadro" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="12" cy="12" r="8"></circle>
@@ -102,100 +115,169 @@
                 </div>
             </section>
 
-            <section id="videos" class="sessao">
+            <section id="videos" class="sessao secao-monitorada">
                 <div class="container">
-                    <div class="titulo-bloco">
+                    <div class="titulo-bloco reveal">
                         <h2>Vídeos</h2>
                         <p>Assista gratuitamente e aprenda no seu ritmo.</p>
                     </div>
 
-                    <section class="grade-videos" aria-label="Lista de vídeos">
-                        <article class="card-video">
-                            <div class="video-thumb">
-                                <video controls preload="metadata">
-                                    <source src="videos/5%20Passos%20Simples%20pra%20Investir%20HOJE.mp4" type="video/mp4">
-                                    Seu navegador não suporta vídeo HTML5.
-                                </video>
-                                <span class="duracao">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="9"></circle>
-                                        <path d="M12 7v5l3 2"></path>
-                                    </svg>
-                                    12 min
-                                </span>
-                            </div>
-                            <div class="card-conteudo">
-                                <h3>Como começar no mercado de ações</h3>
-                                <p>Primeiros passos para investir em renda variável com segurança.</p>
-                            </div>
-                        </article>
+                    <div class="videos-topbar reveal">
+                        <div class="filtros-video" aria-label="Filtrar vídeos por tema">
+                            <button class="filtro-btn is-active" type="button" data-filter="all">Todos</button>
+                            <button class="filtro-btn" type="button" data-filter="iniciante">Iniciantes</button>
+                            <button class="filtro-btn" type="button" data-filter="risco">Risco</button>
+                            <button class="filtro-btn" type="button" data-filter="fundamentos">Fundamentos</button>
+                            <button class="filtro-btn" type="button" data-filter="planejamento">Planejamento</button>
+                        </div>
 
-                        <article class="card-video">
-                            <div class="video-thumb">
-                                <video controls preload="metadata">
-                                    <source src="videos/5%20Regras%20SIMPLES%20pra%20N%C3%A3o%20Perder%20Dinheiro.mp4" type="video/mp4">
-                                    Seu navegador não suporta vídeo HTML5.
-                                </video>
-                                <span class="duracao">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="9"></circle>
-                                        <path d="M12 7v5l3 2"></path>
-                                    </svg>
-                                    9 min
-                                </span>
-                            </div>
-                            <div class="card-conteudo">
-                                <h3>Gestão de risco para iniciantes</h3>
-                                <p>Entenda como proteger seu dinheiro e minimizar perdas.</p>
-                            </div>
-                        </article>
+                        <div class="slider-controles" aria-label="Controles do carrossel">
+                            <button class="slider-btn" type="button" data-slider="prev" aria-label="Vídeos anteriores">‹</button>
+                            <button class="slider-btn" type="button" data-slider="next" aria-label="Próximos vídeos">›</button>
+                        </div>
+                    </div>
 
-                        <article class="card-video">
-                            <div class="video-thumb">
-                                <video controls preload="metadata">
-                                    <source src="videos/6%20Fundamentos%20da%20Bolsa%20que%20Ningu%C3%A9m%20te%20Conta.mp4" type="video/mp4">
-                                    Seu navegador não suporta vídeo HTML5.
-                                </video>
-                                <span class="duracao">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="9"></circle>
-                                        <path d="M12 7v5l3 2"></path>
-                                    </svg>
-                                    15 min
-                                </span>
-                            </div>
-                            <div class="card-conteudo">
-                                <h3>Fundamentos para investir melhor</h3>
-                                <p>Análise fundamentalista de forma prática e acessível.</p>
-                            </div>
-                        </article>
+                    <div class="slider-viewport reveal">
+                        <section class="grade-videos" aria-label="Lista de vídeos">
+                            <article class="card-video" data-category="iniciante">
+                                <button
+                                    class="video-abrir"
+                                    type="button"
+                                    data-video-src="videos/5%20Passos%20Simples%20pra%20Investir%20HOJE.mp4"
+                                    data-video-title="Como começar no mercado de ações"
+                                    data-video-description="Primeiros passos para investir em renda variável com segurança."
+                                >
+                                    <div class="video-thumb">
+                                        <video preload="metadata" muted playsinline>
+                                            <source src="videos/5%20Passos%20Simples%20pra%20Investir%20HOJE.mp4" type="video/mp4">
+                                            Seu navegador não suporta vídeo HTML5.
+                                        </video>
+                                        <span class="video-overlay">
+                                            <span class="botao-play" aria-hidden="true"></span>
+                                            <span class="video-overlay-texto">Abrir em destaque</span>
+                                        </span>
+                                        <span class="duracao">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="9"></circle>
+                                                <path d="M12 7v5l3 2"></path>
+                                            </svg>
+                                            12 min
+                                        </span>
+                                    </div>
+                                    <div class="card-conteudo">
+                                        <span class="video-categoria">Iniciantes</span>
+                                        <h3>Como começar no mercado de ações</h3>
+                                        <p>Primeiros passos para investir em renda variável com segurança.</p>
+                                    </div>
+                                </button>
+                            </article>
 
-                        <article class="card-video">
-                            <div class="video-thumb">
-                                <video controls preload="metadata">
-                                    <source src="videos/6%20Passos%20Simples%20Para%20Investir%20Melhor%20em%202026.mp4" type="video/mp4">
-                                    Seu navegador não suporta vídeo HTML5.
-                                </video>
-                                <span class="duracao">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="9"></circle>
-                                        <path d="M12 7v5l3 2"></path>
-                                    </svg>
-                                    11 min
-                                </span>
-                            </div>
-                            <div class="card-conteudo">
-                                <h3>Planejamento financeiro na prática</h3>
-                                <p>Organize suas finanças e crie metas realistas para investir.</p>
-                            </div>
-                        </article>
-                    </section>
+                            <article class="card-video" data-category="risco">
+                                <button
+                                    class="video-abrir"
+                                    type="button"
+                                    data-video-src="videos/5%20Regras%20SIMPLES%20pra%20N%C3%A3o%20Perder%20Dinheiro.mp4"
+                                    data-video-title="Gestão de risco para iniciantes"
+                                    data-video-description="Entenda como proteger seu dinheiro e minimizar perdas."
+                                >
+                                    <div class="video-thumb">
+                                        <video preload="metadata" muted playsinline>
+                                            <source src="videos/5%20Regras%20SIMPLES%20pra%20N%C3%A3o%20Perder%20Dinheiro.mp4" type="video/mp4">
+                                            Seu navegador não suporta vídeo HTML5.
+                                        </video>
+                                        <span class="video-overlay">
+                                            <span class="botao-play" aria-hidden="true"></span>
+                                            <span class="video-overlay-texto">Abrir em destaque</span>
+                                        </span>
+                                        <span class="duracao">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="9"></circle>
+                                                <path d="M12 7v5l3 2"></path>
+                                            </svg>
+                                            9 min
+                                        </span>
+                                    </div>
+                                    <div class="card-conteudo">
+                                        <span class="video-categoria">Risco</span>
+                                        <h3>Gestão de risco para iniciantes</h3>
+                                        <p>Entenda como proteger seu dinheiro e minimizar perdas.</p>
+                                    </div>
+                                </button>
+                            </article>
+
+                            <article class="card-video" data-category="fundamentos">
+                                <button
+                                    class="video-abrir"
+                                    type="button"
+                                    data-video-src="videos/6%20Fundamentos%20da%20Bolsa%20que%20Ningu%C3%A9m%20te%20Conta.mp4"
+                                    data-video-title="Fundamentos para investir melhor"
+                                    data-video-description="Análise fundamentalista de forma prática e acessível."
+                                >
+                                    <div class="video-thumb">
+                                        <video preload="metadata" muted playsinline>
+                                            <source src="videos/6%20Fundamentos%20da%20Bolsa%20que%20Ningu%C3%A9m%20te%20Conta.mp4" type="video/mp4">
+                                            Seu navegador não suporta vídeo HTML5.
+                                        </video>
+                                        <span class="video-overlay">
+                                            <span class="botao-play" aria-hidden="true"></span>
+                                            <span class="video-overlay-texto">Abrir em destaque</span>
+                                        </span>
+                                        <span class="duracao">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="9"></circle>
+                                                <path d="M12 7v5l3 2"></path>
+                                            </svg>
+                                            15 min
+                                        </span>
+                                    </div>
+                                    <div class="card-conteudo">
+                                        <span class="video-categoria">Fundamentos</span>
+                                        <h3>Fundamentos para investir melhor</h3>
+                                        <p>Análise fundamentalista de forma prática e acessível.</p>
+                                    </div>
+                                </button>
+                            </article>
+
+                            <article class="card-video" data-category="planejamento">
+                                <button
+                                    class="video-abrir"
+                                    type="button"
+                                    data-video-src="videos/6%20Passos%20Simples%20Para%20Investir%20Melhor%20em%202026.mp4"
+                                    data-video-title="Planejamento financeiro na prática"
+                                    data-video-description="Organize suas finanças e crie metas realistas para investir."
+                                >
+                                    <div class="video-thumb">
+                                        <video preload="metadata" muted playsinline>
+                                            <source src="videos/6%20Passos%20Simples%20Para%20Investir%20Melhor%20em%202026.mp4" type="video/mp4">
+                                            Seu navegador não suporta vídeo HTML5.
+                                        </video>
+                                        <span class="video-overlay">
+                                            <span class="botao-play" aria-hidden="true"></span>
+                                            <span class="video-overlay-texto">Abrir em destaque</span>
+                                        </span>
+                                        <span class="duracao">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="9"></circle>
+                                                <path d="M12 7v5l3 2"></path>
+                                            </svg>
+                                            11 min
+                                        </span>
+                                    </div>
+                                    <div class="card-conteudo">
+                                        <span class="video-categoria">Planejamento</span>
+                                        <h3>Planejamento financeiro na prática</h3>
+                                        <p>Organize suas finanças e crie metas realistas para investir.</p>
+                                    </div>
+                                </button>
+                            </article>
+                        </section>
+                    </div>
                 </div>
             </section>
 
             <section class="sessao sessao-clara">
                 <div class="container dica-wrapper">
-                    <aside class="dica" aria-label="Dica rápida">
+                    <aside class="dica reveal" aria-label="Dica rápida">
                         <div class="icone-quadro" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M9 18h6"></path>
@@ -203,18 +285,117 @@
                                 <path d="M12 2a6 6 0 0 0-3 11.2V16h6v-2.8A6 6 0 0 0 12 2z"></path>
                             </svg>
                         </div>
-                        <div>
+                        <div class="dica-conteudo">
                             <div class="dica-cabecalho">
                                 <span aria-hidden="true">💡</span>
                                 <h2>Dica Rápida</h2>
                             </div>
-                            <p>
+                            <p id="dica-texto">
                                 Antes de investir, monte uma reserva de emergência equivalente a pelo menos 6 meses
                                 dos seus custos fixos. Isso garante segurança para explorar o mercado de renda variável
                                 com tranquilidade.
                             </p>
+                            <div class="dica-acoes">
+                                <button class="dica-botao" id="trocar-dica" type="button">Trocar dica</button>
+                                <span class="dica-indicador" id="dica-indicador">Dica 1 de 4</span>
+                            </div>
                         </div>
                     </aside>
+                </div>
+            </section>
+
+            <section id="jogo" class="sessao secao-monitorada">
+                <div class="container">
+                    <div class="titulo-bloco reveal">
+                        <h2>Crash Market Survivor</h2>
+                        <p>Veja a proposta do jogo, acompanhe o ranking e acesse a experiência.</p>
+                    </div>
+
+                    <div class="jogo-grid">
+                        <article class="card-jogo destaque-jogo reveal">
+                            <span class="jogo-etiqueta">Preview interativo</span>
+                            <h3>Sobreviva às quedas e proteja sua carteira</h3>
+                            <p>
+                                Um jogo educativo em que você precisa reagir a notícias, controlar risco e tomar
+                                decisões rápidas durante uma crise no mercado.
+                            </p>
+                            <ul class="jogo-lista">
+                                <li>Eventos surpresa que mexem com o preço dos ativos.</li>
+                                <li>Decisões de compra, venda e proteção em tempo real.</li>
+                                <li>Feedback educativo com foco em estratégia e disciplina.</li>
+                            </ul>
+                            <div class="jogo-acoes">
+                                <button class="hero-cta jogo-preview-btn" type="button" id="abrir-preview-jogo">Ver preview</button>
+                                <a class="hero-link jogo-link" href="../Crash_Market_Survivor/index.html">Jogar agora</a>
+                            </div>
+                        </article>
+
+                        <aside class="card-jogo ranking-card reveal">
+                            <div class="ranking-topo">
+                                <h3>Ranking semanal</h3>
+                                <span class="ranking-badge">Atualizado localmente</span>
+                            </div>
+                            <ol class="ranking-lista" id="ranking-jogo">
+                                <li><span>Ana Trader</span><strong>9.420 pts</strong></li>
+                                <li><span>Lucas Hedge</span><strong>8.975 pts</strong></li>
+                                <li><span>Marina Value</span><strong>8.610 pts</strong></li>
+                                <li><span>Caio Bull</span><strong>8.140 pts</strong></li>
+                                <li><span>Sofia Risk</span><strong>7.890 pts</strong></li>
+                            </ol>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contato" class="sessao sessao-clara secao-monitorada">
+                <div class="container">
+                    <div class="titulo-bloco reveal">
+                        <h2>Receba novidades</h2>
+                        <p>Entre para a newsletter e acompanhe novos vídeos, dicas e atualizações do jogo.</p>
+                    </div>
+
+                    <div class="contato-grid">
+                        <article class="contato-card reveal">
+                            <h3>Newsletter gratuita</h3>
+                            <p>Cadastre-se para receber materiais educativos e novos conteúdos diretamente no seu e-mail.</p>
+
+                            <form class="newsletter-form" id="newsletter-form" novalidate>
+                                <label class="campo-formulario">
+                                    <span>Nome</span>
+                                    <input type="text" id="nome" name="nome" placeholder="Seu nome" minlength="2" required>
+                                </label>
+
+                                <label class="campo-formulario">
+                                    <span>E-mail</span>
+                                    <input type="email" id="email" name="email" placeholder="voce@email.com" required>
+                                </label>
+
+                                <label class="campo-formulario">
+                                    <span>Interesse principal</span>
+                                    <select id="interesse" name="interesse" required>
+                                        <option value="">Selecione um tema</option>
+                                        <option value="iniciante">Começando do zero</option>
+                                        <option value="risco">Gestão de risco</option>
+                                        <option value="fundamentos">Fundamentos</option>
+                                        <option value="planejamento">Planejamento</option>
+                                        <option value="jogo">Jogo educativo</option>
+                                    </select>
+                                </label>
+
+                                <button class="hero-cta formulario-botao" type="submit">Quero receber</button>
+                                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                            </form>
+                        </article>
+
+                        <aside class="contato-card contato-info reveal">
+                            <h3>O que você vai receber</h3>
+                            <ul class="jogo-lista">
+                                <li>Novos vídeos com foco em educação financeira prática.</li>
+                                <li>Dicas rápidas para organização e gestão de risco.</li>
+                                <li>Atualizações do projeto Crash Market Survivor.</li>
+                            </ul>
+                        </aside>
+                    </div>
                 </div>
             </section>
         </main>
@@ -233,7 +414,8 @@
                     <nav class="rodape-nav" aria-label="Links do rodapé">
                         <a href="#home">Home</a>
                         <a href="#videos">Vídeos</a>
-                        <a href="../Crash_Market_Survivor/">Jogo</a>
+                        <a href="#jogo">Jogo</a>
+                        <a href="#contato">Contato</a>
                     </nav>
                 </div>
 
@@ -245,5 +427,63 @@
             </div>
         </footer>
     </div>
+
+    <div class="modal" id="video-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-video-titulo">
+        <div class="modal-backdrop" data-close-modal="true"></div>
+        <div class="modal-conteudo">
+            <button class="modal-fechar" type="button" data-close-modal="true" aria-label="Fechar modal">×</button>
+            <div class="modal-video-box">
+                <video id="modal-video-player" controls playsinline>
+                    <source id="modal-video-source" src="" type="video/mp4">
+                    Seu navegador não suporta vídeo HTML5.
+                </video>
+            </div>
+            <div class="modal-texto">
+                <p class="modal-etiqueta">Vídeo em destaque</p>
+                <h3 id="modal-video-titulo">Título do vídeo</h3>
+                <p id="modal-video-descricao">Descrição do vídeo.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="jogo-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-jogo-titulo">
+        <div class="modal-backdrop" data-close-modal="true"></div>
+        <div class="modal-conteudo modal-jogo-conteudo">
+            <button class="modal-fechar" type="button" data-close-modal="true" aria-label="Fechar modal">×</button>
+            <div class="modal-texto">
+                <p class="modal-etiqueta">Preview do jogo</p>
+                <h3 id="modal-jogo-titulo">Crash Market Survivor</h3>
+                <p>
+                    Você começa com uma carteira equilibrada e precisa sobreviver a eventos de alta volatilidade.
+                    Cada rodada traz manchetes, pânico e oportunidades. O desafio é decidir com disciplina.
+                </p>
+            </div>
+            <div class="preview-jogo">
+                <div class="preview-painel">
+                    <span class="preview-label">Carteira atual</span>
+                    <strong>R$ 125.000</strong>
+                    <small>Exposição moderada</small>
+                </div>
+                <div class="preview-painel">
+                    <span class="preview-label">Alerta de mercado</span>
+                    <strong>Queda de 8,4%</strong>
+                    <small>Rumor sobre juros mais altos</small>
+                </div>
+                <div class="preview-painel">
+                    <span class="preview-label">Ação sugerida</span>
+                    <strong>Rebalancear</strong>
+                    <small>Reduzir risco e preservar caixa</small>
+                </div>
+            </div>
+            <div class="jogo-acoes">
+                <a class="hero-cta" href="../Crash_Market_Survivor/index.html">Abrir jogo</a>
+                <button class="hero-link modal-link-botao" type="button" data-close-modal="true">Continuar navegando</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="voltar-topo" id="voltar-topo" type="button" aria-label="Voltar ao topo">↑</button>
+
+    <script src="script.js"></script>
 </body>
 </html>

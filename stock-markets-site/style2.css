@@ -1,6 +1,7 @@
 :root {
     --bg: #f6f8fb;
     --surface: #ffffff;
+    --surface-soft: #f7fbff;
     --navy: #173768;
     --navy-soft: #314f81;
     --navy-card: #304d7b;
@@ -28,6 +29,11 @@ body {
     color: var(--text);
 }
 
+body.menu-aberto,
+body.modal-open {
+    overflow: hidden;
+}
+
 img {
     max-width: 100%;
     display: block;
@@ -36,6 +42,12 @@ img {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
 }
 
 .container {
@@ -49,12 +61,17 @@ a {
 }
 
 .topo {
-    background: var(--navy);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(23, 55, 104, 0.94);
     color: #fff;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 12px 30px rgba(10, 30, 59, 0.16);
 }
 
 .topo-conteudo {
-    min-height: 66px;
+    min-height: 76px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -86,23 +103,66 @@ a {
     color: rgba(255, 255, 255, 0.72);
 }
 
+.menu-toggle {
+    display: none;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: #fff;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+body.menu-aberto .menu-toggle span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+body.menu-aberto .menu-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+body.menu-aberto .menu-toggle span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 .navegacao ul {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 16px;
     margin: 0;
     padding: 0;
 }
 
 .navegacao a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 999px;
     color: rgba(255, 255, 255, 0.92);
-    font-size: 1.05rem;
-    transition: color 0.2s ease;
+    font-size: 1rem;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.navegacao a:hover {
-    color: #9ce8d2;
+.navegacao a:hover,
+.navegacao a.is-active {
+    color: #fff;
+    background: rgba(104, 234, 197, 0.18);
 }
 
 .hero {
@@ -186,21 +246,50 @@ a {
     color: rgba(244, 248, 255, 0.84);
 }
 
-.hero-cta {
+.hero-acoes,
+.jogo-acoes,
+.dica-acoes {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.hero-cta,
+.formulario-botao,
+.dica-botao {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     padding: 17px 24px;
+    border: 0;
     border-radius: 14px;
     background: linear-gradient(135deg, #35c49a, #32bf99);
     color: #fff;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.02rem;
     box-shadow: 0 16px 28px rgba(53, 196, 154, 0.26);
+    cursor: pointer;
 }
 
-.hero-cta:hover {
+.hero-cta:hover,
+.formulario-botao:hover,
+.dica-botao:hover {
     background: linear-gradient(135deg, #2fba92, #2cae89);
+}
+
+.hero-link,
+.modal-link-botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 22px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    color: #fff;
+    background: transparent;
+    cursor: pointer;
 }
 
 .sessao {
@@ -230,8 +319,7 @@ a {
     font-size: 1.2rem;
 }
 
-.grade-beneficios,
-.grade-videos {
+.grade-beneficios {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 24px;
@@ -239,7 +327,9 @@ a {
 
 .card-beneficio,
 .card-video,
-.dica {
+.dica,
+.card-jogo,
+.contato-card {
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 22px;
@@ -268,7 +358,9 @@ a {
 }
 
 .card-beneficio h3,
-.card-video h3 {
+.card-video h3,
+.card-jogo h3,
+.contato-card h3 {
     margin: 0 0 12px;
     font-size: 1.18rem;
     line-height: 1.35;
@@ -277,35 +369,133 @@ a {
 
 .card-beneficio p,
 .card-video p,
-.dica p {
+.dica p,
+.card-jogo p,
+.contato-card p {
     margin: 0;
     font-size: 1rem;
     line-height: 1.75;
     color: var(--muted);
 }
 
-.card-video {
+.videos-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.filtros-video,
+.slider-controles {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.filtro-btn,
+.slider-btn {
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--navy);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filtro-btn:hover,
+.filtro-btn.is-active,
+.slider-btn:hover {
+    border-color: rgba(56, 199, 155, 0.38);
+    background: var(--mint-soft);
+    color: var(--mint-dark);
+}
+
+.slider-btn {
+    width: 44px;
+    padding: 0;
+    font-size: 1.4rem;
+}
+
+.slider-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.slider-viewport {
     overflow: hidden;
+}
+
+.grade-videos {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.35s ease;
+    will-change: transform;
+}
+
+.card-video {
+    flex: 0 0 calc(25% - 18px);
+    overflow: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.card-video.is-hidden {
+    display: none;
+}
+
+.video-abrir {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
 }
 
 .video-thumb {
     position: relative;
     aspect-ratio: 9 / 16;
     min-height: 160px;
-    padding: 0;
     background: linear-gradient(180deg, #334e7c 0%, #314b78 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .video-thumb video {
     width: 100%;
     height: 100%;
-    min-height: 160px;
     display: block;
     background: #000;
     object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: linear-gradient(180deg, rgba(16, 35, 63, 0.08), rgba(16, 35, 63, 0.58));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.video-abrir:hover .video-overlay,
+.video-abrir:focus-visible .video-overlay {
+    opacity: 1;
+}
+
+.video-overlay-texto {
+    color: #fff;
+    font-weight: 700;
 }
 
 .botao-play {
@@ -353,6 +543,21 @@ a {
     padding: 18px 20px 20px;
 }
 
+.video-categoria,
+.jogo-etiqueta,
+.modal-etiqueta,
+.ranking-badge {
+    display: inline-flex;
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--mint-soft);
+    color: var(--mint-dark);
+    font-size: 0.84rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
 .dica-wrapper {
     display: flex;
     justify-content: center;
@@ -360,7 +565,7 @@ a {
 
 .dica {
     position: relative;
-    width: min(100%, 670px);
+    width: min(100%, 760px);
     padding: 30px 32px;
     display: flex;
     align-items: flex-start;
@@ -379,17 +584,122 @@ a {
     background: rgba(54, 196, 155, 0.08);
 }
 
+.dica-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
 .dica-cabecalho {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
 }
 
 .dica-cabecalho h2 {
     margin: 0;
     font-size: 1.1rem;
     color: #1f2d3f;
+}
+
+.dica-indicador {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.jogo-grid,
+.contato-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 24px;
+}
+
+.card-jogo,
+.contato-card {
+    padding: 28px;
+}
+
+.destaque-jogo {
+    background:
+        radial-gradient(circle at top right, rgba(56, 199, 155, 0.14), transparent 30%),
+        linear-gradient(145deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.jogo-lista,
+.ranking-lista {
+    margin: 20px 0 0;
+    padding-left: 20px;
+    color: var(--muted);
+}
+
+.jogo-lista li,
+.ranking-lista li {
+    margin-bottom: 12px;
+    line-height: 1.65;
+}
+
+.ranking-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.ranking-lista {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.ranking-lista li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-right: 8px;
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.campo-formulario span {
+    font-weight: 600;
+    color: #18355f;
+}
+
+.campo-formulario input,
+.campo-formulario select {
+    min-height: 52px;
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface-soft);
+    color: var(--text);
+    outline: none;
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus {
+    border-color: rgba(56, 199, 155, 0.6);
+    box-shadow: 0 0 0 4px rgba(56, 199, 155, 0.12);
+}
+
+.form-status {
+    min-height: 24px;
+    margin: 14px 0 0;
+    font-weight: 600;
+}
+
+.form-status.is-error {
+    color: #c14d4d;
+}
+
+.form-status.is-success {
+    color: #188163;
 }
 
 .rodape {
@@ -415,12 +725,19 @@ a {
 
 .rodape-nav {
     display: flex;
-    gap: 30px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
 .rodape-nav a {
     color: rgba(255, 255, 255, 0.86);
+    min-height: 40px;
+    padding: 8px 12px;
+    border-radius: 999px;
+}
+
+.rodape-nav a:hover {
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .rodape-linha {
@@ -436,10 +753,156 @@ a {
     font-size: 0.98rem;
 }
 
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 80;
+}
+
+.modal.is-open {
+    display: flex;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 20, 40, 0.7);
+    backdrop-filter: blur(8px);
+}
+
+.modal-conteudo {
+    position: relative;
+    width: min(940px, 100%);
+    max-height: min(92vh, 880px);
+    overflow: auto;
+    background: #fff;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 28px 70px rgba(7, 20, 40, 0.28);
+    z-index: 1;
+}
+
+.modal-fechar {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(16, 35, 63, 0.08);
+    color: #173768;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-video-box {
+    border-radius: 18px;
+    overflow: hidden;
+    background: #091427;
+}
+
+.modal-video-box video {
+    width: 100%;
+    display: block;
+    max-height: 68vh;
+    background: #000;
+}
+
+.modal-texto {
+    margin-top: 22px;
+}
+
+.modal-jogo-conteudo {
+    width: min(760px, 100%);
+}
+
+.preview-jogo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.preview-painel {
+    padding: 18px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #f5fbff, #eef6ff);
+    border: 1px solid var(--line);
+}
+
+.preview-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.88rem;
+    color: var(--muted);
+}
+
+.preview-painel strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 1.35rem;
+    color: #173768;
+}
+
+.preview-painel small {
+    color: var(--muted);
+}
+
+.voltar-topo {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 52px;
+    height: 52px;
+    border: 0;
+    border-radius: 50%;
+    background: #173768;
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 16px 28px rgba(23, 55, 104, 0.22);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    z-index: 40;
+}
+
+.voltar-topo.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 @media (max-width: 1100px) {
-    .grade-beneficios,
-    .grade-videos {
+    .grade-beneficios {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card-video {
+        flex-basis: calc(50% - 12px);
+    }
+
+    .jogo-grid,
+    .contato-grid,
+    .preview-jogo {
+        grid-template-columns: 1fr;
     }
 
     .hero {
@@ -454,9 +917,44 @@ a {
 
     .topo-conteudo,
     .rodape-topo {
+        padding: 14px 0;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    .navegacao {
+        position: fixed;
+        top: 76px;
+        left: 16px;
+        right: 16px;
+        background: rgba(23, 55, 104, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: 14px;
+        box-shadow: 0 18px 40px rgba(11, 28, 54, 0.24);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    body.menu-aberto .navegacao {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .navegacao ul {
         flex-direction: column;
-        align-items: flex-start;
-        padding: 16px 0;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .navegacao a {
+        width: 100%;
+        justify-content: center;
     }
 
     .hero-conteudo {
@@ -471,22 +969,32 @@ a {
         padding: 72px 0;
     }
 
-    .grade-beneficios,
-    .grade-videos {
+    .videos-topbar,
+    .hero-acoes,
+    .jogo-acoes,
+    .dica-acoes {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .grade-beneficios {
         grid-template-columns: 1fr;
+    }
+
+    .card-video {
+        flex-basis: 100%;
     }
 
     .dica {
         flex-direction: column;
     }
+
+    .modal {
+        padding: 16px;
+    }
 }
 
 @media (max-width: 520px) {
-    .navegacao ul,
-    .rodape-nav {
-        gap: 18px;
-    }
-
     .hero h1 {
         font-size: 2.8rem;
     }
@@ -494,5 +1002,12 @@ a {
     .hero p,
     .titulo-bloco p {
         font-size: 1rem;
+    }
+
+    .modal-conteudo,
+    .card-jogo,
+    .contato-card,
+    .dica {
+        padding: 22px;
     }
 }
