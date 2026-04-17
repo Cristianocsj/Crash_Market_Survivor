@@ -1,0 +1,3 @@
+Mudanças em relação ao site
+    1 OK - Acompanhar o <header> com o scroll do mouse
+    2 - Modificar a logo do site dando a preferência logos sem escrita(usar IA) e seguindo o mesmo modelo do favicon
