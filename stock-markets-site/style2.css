@@ -87,7 +87,7 @@ select {
 }
 
 .marca-logo {
-    width: 36px;
+    /*width: 36px;*/
     height: 36px;
     object-fit: contain;
     border-radius: 12px;
