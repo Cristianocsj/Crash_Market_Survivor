@@ -1,0 +1,45 @@
+Documentação de Projeto: Market Crash Survivor
+1. Visão Geral
+O projeto é uma experiência de marca para uma Fintech, composta por uma Landing Page Comercial e um jogo em Unity (WebGL). O jogo desafia o usuário a navegar por um gráfico de barras 3D vivo, onde o objetivo é escalar as altas do mercado e evitar ser enterrado pelas quedas.
+
+2. A Landing Page (Front-End)
+Conceito: Interface de plataforma de Home Broker profissional.
+
+Estética: Design limpo, profissional, com uso de sombras suaves e tipografia moderna.
+
+Interatividade: O site apresenta dados sobre "Gestão de Risco". O jogo entra como o "Simulador de Stress de Mercado".
+
+Botão de Acesso: [TESTAR REFLEXOS NO PREGÃO].
+
+3. O Jogo: "The Floor is Bear Market" (Unity)
+A Arena: O Gráfico Vivo
+A arena é um grid de cubos verticais (Candlesticks).
+
+Movimentação das Barras: Todas as barras sobem e descem constantemente de forma suave, mas em ciclos específicos elas assumem comportamentos extremos.
+
+Dinâmica de Cores e Altura
+O foco aqui é o posicionamento estratégico:
+
+Velas Vermelhas (Ação em Queda):
+
+Comportamento: A barra brilha em vermelho e desce rapidamente para uma posição inferior (abaixo do nível médio).
+
+Risco: Se o jogador ficar nela, ele perde altitude e fica "preso" no fundo, tornando mais difícil pular para outras barras que estão subindo.
+
+Velas Verdes (Ação em Alta):
+
+Comportamento: A barra brilha em verde e sobe rapidamente para uma posição superior.
+
+Oportunidade: O jogador usa essas barras como elevadores para alcançar níveis cada vez mais altos.
+
+Mecânica de Recorde e Game Over
+O Objetivo: Subir o máximo possível. O jogo monitora a coordenada Y (altura) mais alta que o jogador alcançou.
+
+O "Game Over": Como as barras não somem, o fim do jogo pode ser por um Limite de Tempo (o pregão encerra) ou se o jogador cair da arena (caso ele seja empurrado para fora do grid).
+
+Resultado Final: A pontuação é o "Patrimônio Máximo Acumulado" (representado pela altura máxima atingida).
+
+Interação (Estilo Pummel Party)
+Física de Colisão: Os jogadores podem se empurrar.
+
+Estratégia: Empurrar um adversário de uma barra que está prestes a subir (Verde) para garantir que só você aproveite a alta, ou empurrá-lo para uma que está despencando (Vermelha).
