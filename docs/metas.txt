@@ -1,6 +1,11 @@
 Mudanças em relação ao site
-    1 OK - Acompanhar o <header> com o scroll do mouse
+
+    - Ajustar tamanho das caixas de texto do formulário, muito grande elas estão
 
 
-    2 - Modificar a logo do site dando a preferência logos sem escrita(usar IA) e seguindo o mesmo modelo do favicon
-    3 - 
+    OK - Consertar o X(botão de fechar) para os modais quando o usuário entrar, ele está sobrepondo parte do vídeo e nao está evidente
+    OK - Acompanhar o <header> com o scroll do mouse APENAS PARA DESKTOP, Mobile o header precisa ser modificado por está muito grande
+    OK - Modificar a logo do site dando a preferência logos sem escrita(usar IA) e seguindo o mesmo modelo do favicon
+    OK - Ajustar no mobile o X do nav
+    OK - Ajustar o tamanho da logo, está minuscula
+    OK - Ajustar o tamanho da fonte no header no mobile

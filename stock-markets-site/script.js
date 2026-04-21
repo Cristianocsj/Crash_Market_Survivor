@@ -1,3 +1,6 @@
+// Script para interatividade do site de mercados financeiros
+
+// Elementos principais do DOM
 const body = document.body;
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".navegacao");
