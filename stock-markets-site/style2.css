@@ -56,11 +56,6 @@ select {
 }
 
 /* fixação do header no topo da viewport quando desativado, consertar isso para o mobile depois
-.page-shell {
-    overflow: hidden;
-    border-radius: 0 0 18px 18px;
-}
-*/
 
 .topo {
     position: sticky;
@@ -572,6 +567,10 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     align-items: flex-start;
     gap: 20px;
     overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
 }
 
 .dica::after {
@@ -586,6 +585,8 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 }
 
 .dica-conteudo {
+    flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -1001,7 +1002,6 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 
     .videos-topbar,
     .hero-acoes,
-    .jogo-acoes,
     .dica-acoes {
         align-items: stretch;
         flex-direction: column;
@@ -1036,8 +1036,8 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 
     .modal-conteudo,
     .card-jogo,
-    .contato-card,
-    .dica {
+    .contato-card
+        {
         padding: 22px;
     }
 }
