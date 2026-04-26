@@ -287,7 +287,6 @@
                         </div>
                         <div class="dica-conteudo">
                             <div class="dica-cabecalho">
-                                <span aria-hidden="true">💡</span>
                                 <h2>Dica Rápida</h2>
                             </div>
                             <p id="dica-texto">
@@ -429,22 +428,24 @@
     </div>
 
     <div class="modal" id="video-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-video-titulo">
-        <div class="modal-backdrop" data-close-modal="true"></div>
-        <div class="modal-conteudo">
-            <button class="modal-fechar" type="button" data-close-modal="true" aria-label="Fechar modal">×</button>
-            <div class="modal-video-box">
-                <video id="modal-video-player" controls playsinline>
-                    <source id="modal-video-source" src="" type="video/mp4">
-                    Seu navegador não suporta vídeo HTML5.
-                </video>
-            </div>
+    <div class="modal-backdrop" data-close-modal="true"></div>
+    <div class="modal-conteudo">
+        <div class="modal-cabecalho">
             <div class="modal-texto">
                 <p class="modal-etiqueta">Vídeo em destaque</p>
                 <h3 id="modal-video-titulo">Título do vídeo</h3>
-                <p id="modal-video-descricao">Descrição do vídeo.</p>
+                <p id="modal-video-descricao">Descrição do vídeo. </p>
             </div>
+            <button class="modal-fechar" type="button" data-close-modal="true" aria-label="Fechar modal">×</button>
+        </div>
+        <div class="modal-video-box">
+            <video id="modal-video-player" controls playsinline>
+                <source id="modal-video-source" src="" type="video/mp4">
+                Seu navegador não suporta vídeo HTML5.
+            </video>
         </div>
     </div>
+</div>
 
     <div class="modal" id="jogo-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-jogo-titulo">
         <div class="modal-backdrop" data-close-modal="true"></div>

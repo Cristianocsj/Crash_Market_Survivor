@@ -789,11 +789,17 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     flex-direction: column;
 }
 
+.modal-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
 .modal-fechar {
     position: static;
-    display: block;
-    margin-left: auto;
-    margin-bottom: 12px;
+    flex-shrink: 0;
     width: 42px;
     height: 42px;
     border: 0;
@@ -802,6 +808,7 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     color: #173768;
     font-size: 1.5rem;
     cursor: pointer;
+    margin-bottom: auto;
 }
 
 .modal-video-box {
@@ -821,7 +828,7 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 }
 
 .modal-texto {
-    margin-top: 22px;
+    margin-top: 0;
 }
 
 .modal-jogo-conteudo {
