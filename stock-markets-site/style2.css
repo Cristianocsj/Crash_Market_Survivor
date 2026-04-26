@@ -55,8 +55,6 @@ select {
     margin: 0 auto;
 }
 
-/* fixação do header no topo da viewport quando desativado, consertar isso para o mobile depois
-
 .topo {
     position: sticky;
     top: 0;
@@ -1013,10 +1011,6 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 
     .card-video {
         flex-basis: 100%;
-    }
-
-    .dica {
-        flex-direction: column;
     }
 
     .modal {
