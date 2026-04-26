@@ -1,12 +1,13 @@
 Mudanças em relação ao site
 
-    - Ajustar tamanho das caixas de texto do formulário, muito grande elas estão
-    - Ajustar o emoji, dicas
+    
     - Modificar e inovar na section de introdução centralizando
     - Investir na interatividade na section de beneficios para os cards correspondentes
     - Criar uma interatividade na troca das dicas
     - Na parte de novidades, mover o aside de contato primeiro antes do form
 
+    OK - Ajustar tamanho das caixas de texto do formulário, muito grande elas estão
+    OK - Ajustar o emoji, dicas
     OK - Ajustar o tamanho da margem dos X nos modais de vídeos e jogo
     OK - Retirar a barra de scroll nos modais de vídeo para desktop
     OK - Consertar o X(botão de fechar) para os modais quando o usuário entrar, ele está sobrepondo parte do vídeo e nao está evidente

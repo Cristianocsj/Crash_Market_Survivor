@@ -664,6 +664,7 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     flex-direction: column;
     gap: 8px;
     margin-bottom: 18px;
+    max-width: 420px; /* ajuste esse valor ao seu gosto */
 }
 
 .campo-formulario span {
@@ -924,6 +925,11 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 }
 
 @media (max-width: 760px) {
+
+    .campo-formulario {
+        max-width: 100%;
+    }
+    
     .container {
         width: min(100% - 32px, 1210px);
     }
