@@ -161,9 +161,12 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 
 .hero {
     position: relative;
-    min-height: 700px;
+    min-height: calc(100svh - 116px);
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
     background:
         linear-gradient(90deg, rgba(20, 56, 107, 0.97) 0%, rgba(20, 56, 107, 0.92) 43%, rgba(20, 56, 107, 0.66) 74%, rgba(20, 56, 107, 0.88) 100%),
         radial-gradient(circle at 85% 16%, rgba(71, 232, 190, 0.14), transparent 28%),
@@ -200,11 +203,15 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 .hero-conteudo {
     position: relative;
     z-index: 1;
-    padding: 70px 0 90px;
+    padding: clamp(36px, 5vw, 56px) 0 clamp(28px, 4vw, 46px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-texto {
-    max-width: 600px;
+    max-width: 860px;
+    margin: 0 auto;
 }
 
 .hero-tag {
@@ -217,15 +224,15 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     border: 1px solid rgba(76, 230, 188, 0.28);
     color: var(--mint);
     font-size: 1.05rem;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
     margin: 0;
-    font-size: clamp(3rem, 6vw, 5rem);
-    line-height: 0.96;
-    letter-spacing: -0.04em;
-    max-width: 760px;
+    font-size: clamp(2.8rem, 4.9vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0;
+    max-width: 860px;
 }
 
 .hero h1 .destaque {
@@ -233,8 +240,10 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 }
 
 .hero p {
-    margin: 28px 0 34px;
+    margin: 22px 0 26px;
     max-width: 690px;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 1.18rem;
     line-height: 1.52;
     color: rgba(244, 248, 255, 0.84);
@@ -245,8 +254,57 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 .dica-acoes {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 14px;
     flex-wrap: wrap;
+}
+
+.hero-pulso {
+    width: min(920px, 100%);
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid rgba(180, 232, 223, 0.26);
+    border-radius: 22px;
+    background: rgba(8, 26, 52, 0.22);
+    box-shadow: 0 24px 50px rgba(4, 16, 34, 0.2);
+    backdrop-filter: blur(18px);
+}
+
+.pulso-item {
+    min-height: 96px;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+}
+
+.pulso-item-destaque {
+    background: linear-gradient(145deg, rgba(58, 203, 160, 0.24), rgba(76, 133, 206, 0.16));
+    border-color: rgba(111, 239, 202, 0.28);
+}
+
+.pulso-label,
+.pulso-item small {
+    color: rgba(231, 242, 255, 0.72);
+}
+
+.pulso-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.pulso-item strong {
+    color: #fff;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    line-height: 1.2;
 }
 
 .hero-cta,
@@ -286,6 +344,16 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     cursor: pointer;
 }
 
+.card-jogo .jogo-acoes,
+.modal-jogo-conteudo .jogo-acoes {
+    justify-content: flex-start;
+}
+
+.dica-acoes {
+    justify-content: space-between;
+    width: 100%;
+}
+
 .sessao {
     padding: 92px 0;
 }
@@ -303,7 +371,7 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     margin: 0 0 14px;
     font-size: clamp(2.3rem, 5vw, 3.4rem);
     line-height: 1.05;
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
     color: #102847;
 }
 
@@ -331,8 +399,56 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 }
 
 .card-beneficio {
+    position: relative;
     padding: 24px;
     min-height: 216px;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, background-color 0.24s ease;
+}
+
+.card-beneficio::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: linear-gradient(90deg, var(--mint), #6da9e8);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.24s ease;
+}
+
+.card-beneficio:hover,
+.card-beneficio:focus-visible,
+.card-beneficio.is-active {
+    border-color: rgba(56, 199, 155, 0.48);
+    box-shadow: 0 26px 50px rgba(17, 42, 79, 0.12);
+    transform: translateY(-6px);
+}
+
+.card-beneficio:hover::before,
+.card-beneficio:focus-visible::before,
+.card-beneficio.is-active::before {
+    transform: scaleX(1);
+}
+
+.card-beneficio.is-active {
+    background:
+        radial-gradient(circle at top right, rgba(56, 199, 155, 0.12), transparent 34%),
+        var(--surface);
+}
+
+.card-beneficio .icone-quadro {
+    transition: transform 0.24s ease, background-color 0.24s ease, color 0.24s ease;
+}
+
+.card-beneficio:hover .icone-quadro,
+.card-beneficio:focus-visible .icone-quadro,
+.card-beneficio.is-active .icone-quadro {
+    transform: translateY(-3px) scale(1.04);
+    background: #173768;
+    color: #fff;
 }
 
 .icone-quadro {
@@ -370,6 +486,60 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     font-size: 1rem;
     line-height: 1.75;
     color: var(--muted);
+}
+
+.beneficio-detalhe {
+    margin-top: 28px;
+    padding: 26px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(243, 250, 255, 0.96)),
+        radial-gradient(circle at 8% 20%, rgba(56, 199, 155, 0.16), transparent 28%);
+    border: 1px solid rgba(56, 199, 155, 0.22);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+}
+
+.beneficio-etiqueta {
+    display: inline-flex;
+    width: fit-content;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--mint-soft);
+    color: var(--mint-dark);
+    font-size: 0.84rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.beneficio-detalhe h3 {
+    margin: 0 0 8px;
+    font-size: clamp(1.35rem, 3vw, 1.85rem);
+    color: #102847;
+}
+
+.beneficio-detalhe p {
+    margin: 0;
+    max-width: 760px;
+    color: var(--muted);
+    line-height: 1.65;
+}
+
+.beneficio-metrica {
+    width: 112px;
+    min-width: 112px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #173768;
+    color: #fff;
+    box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.08), 0 18px 34px rgba(23, 55, 104, 0.2);
+    text-align: center;
+    font-weight: 800;
 }
 
 .videos-topbar {
@@ -559,7 +729,7 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 
 .dica {
     position: relative;
-    width: min(100%, 760px);
+    width: min(100%, 860px);
     padding: 30px 32px;
     display: flex;
     align-items: flex-start;
@@ -582,6 +752,16 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     background: rgba(54, 196, 155, 0.08);
 }
 
+.dica::before {
+    content: "";
+    position: absolute;
+    inset: auto 32px 0;
+    height: 4px;
+    border-radius: 999px 999px 0 0;
+    background: linear-gradient(90deg, var(--mint), #6ea8de);
+    opacity: 0.75;
+}
+
 .dica-conteudo {
     flex: 1;
     min-width: 0;
@@ -594,6 +774,7 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .dica-cabecalho h2 {
@@ -602,9 +783,106 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     color: #1f2d3f;
 }
 
+.dica-tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--mint-soft);
+    color: var(--mint-dark);
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.dica #dica-texto {
+    transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.dica.is-changing #dica-texto {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.dica-controles,
+.dica-status,
+.dica-pontos {
+    display: flex;
+    align-items: center;
+}
+
+.dica-controles {
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.dica-status {
+    gap: 12px;
+    flex: 1;
+    justify-content: flex-end;
+    min-width: min(100%, 220px);
+}
+
 .dica-indicador {
     color: var(--muted);
     font-size: 0.95rem;
+}
+
+.dica-nav {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--surface-soft);
+    color: var(--navy);
+    font-size: 1.35rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.dica-nav:hover,
+.dica-nav:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(56, 199, 155, 0.42);
+    background: var(--mint-soft);
+}
+
+.dica-progresso {
+    position: relative;
+    width: 118px;
+    height: 8px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e2edf5;
+}
+
+.dica-progresso span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 25%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--mint), #6ea8de);
+    transition: width 0.25s ease;
+}
+
+.dica-pontos {
+    gap: 8px;
+}
+
+.dica-ponto {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #c9d9e8;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.dica-ponto.is-active {
+    transform: scale(1.35);
+    background: var(--mint-dark);
 }
 
 .jogo-grid,
@@ -614,9 +892,20 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     gap: 24px;
 }
 
+.contato-grid {
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: start;
+}
+
 .card-jogo,
 .contato-card {
     padding: 28px;
+}
+
+.contato-info {
+    background:
+        radial-gradient(circle at top right, rgba(56, 199, 155, 0.14), transparent 32%),
+        linear-gradient(145deg, #ffffff, #f6fbff);
 }
 
 .destaque-jogo {
@@ -922,6 +1211,10 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
     .hero {
         min-height: 620px;
     }
+
+    .hero-pulso {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 760px) {
@@ -1000,6 +1293,11 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
         min-height: auto;
     }
 
+    .hero-pulso {
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+    }
+
     .sessao {
         padding: 72px 0;
     }
@@ -1013,6 +1311,24 @@ body.menu-aberto .menu-toggle span:nth-child(3) {
 
     .grade-beneficios {
         grid-template-columns: 1fr;
+    }
+
+    .beneficio-detalhe,
+    .dica {
+        flex-direction: column;
+    }
+
+    .beneficio-metrica {
+        width: 100%;
+        min-width: 0;
+        aspect-ratio: auto;
+        min-height: 74px;
+        border-radius: 18px;
+    }
+
+    .dica-status {
+        justify-content: flex-start;
+        min-width: 0;
     }
 
     .card-video {

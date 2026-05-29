@@ -15,6 +15,12 @@ const sliderNextButton = document.querySelector('[data-slider="next"]');
 const filterButtons = Array.from(document.querySelectorAll(".filtro-btn"));
 const videoCards = Array.from(document.querySelectorAll(".card-video"));
 
+const benefitCards = Array.from(document.querySelectorAll(".card-beneficio[data-benefit]"));
+const benefitLabel = document.getElementById("beneficio-etiqueta");
+const benefitTitle = document.getElementById("beneficio-titulo");
+const benefitDescription = document.getElementById("beneficio-descricao");
+const benefitMetric = document.getElementById("beneficio-metrica");
+
 const videoModal = document.getElementById("video-modal");
 const videoModalSource = document.getElementById("modal-video-source");
 const videoModalPlayer = document.getElementById("modal-video-player");
@@ -26,8 +32,14 @@ const gameModal = document.getElementById("jogo-modal");
 const openGamePreviewButton = document.getElementById("abrir-preview-jogo");
 
 const tipButton = document.getElementById("trocar-dica");
+const tipPreviousButton = document.getElementById("dica-anterior");
+const tipNextButton = document.getElementById("dica-proxima");
 const tipText = document.getElementById("dica-texto");
+const tipTag = document.getElementById("dica-tag");
 const tipIndicator = document.getElementById("dica-indicador");
+const tipProgressBar = document.getElementById("dica-progresso-bar");
+const tipDotsContainer = document.getElementById("dica-pontos");
+const tipCard = document.querySelector(".dica");
 
 const newsletterForm = document.getElementById("newsletter-form");
 const formStatus = document.getElementById("form-status");
@@ -39,16 +51,56 @@ const interestLabels = {
     jogo: "Jogo educativo"
 };
 
+const benefitContent = {
+    didatico: {
+        label: "Trilha inicial",
+        title: "Comece com clareza",
+        description: "Os conteúdos partem dos conceitos essenciais e avançam em blocos curtos, para você aprender sem se perder em jargões.",
+        metric: "Passo 1"
+    },
+    risco: {
+        label: "Proteção",
+        title: "Aprenda a limitar perdas",
+        description: "Cada aula reforça posição, exposição e reserva para que suas decisões tenham um plano antes da emoção aparecer.",
+        metric: "Risco"
+    },
+    mercado: {
+        label: "Leitura prática",
+        title: "Transforme dados em decisão",
+        description: "Você aprende a comparar fundamentos, tendência e contexto para interpretar movimentos do mercado com mais segurança.",
+        metric: "Dados"
+    },
+    planejamento: {
+        label: "Rotina",
+        title: "Construa um plano possível",
+        description: "A jornada conecta metas, aportes e acompanhamento para criar consistência antes de buscar resultados maiores.",
+        metric: "Plano"
+    }
+};
+
 const tips = [
-    "Antes de investir, monte uma reserva de emergência equivalente a pelo menos 6 meses dos seus custos fixos. Isso garante segurança para explorar o mercado de renda variável com tranquilidade.",
-    "Defina um limite de perda por operação. Disciplina é o que impede uma decisão emocional de virar um problema maior.",
-    "Compare empresas usando fundamentos, mas também olhe o contexto do mercado. Bons números não eliminam riscos de curto prazo.",
-    "Registre suas decisões em um diário de investimento. Com o tempo, isso ajuda a entender padrões, erros e acertos."
+    {
+        tag: "Reserva",
+        text: "Antes de investir, monte uma reserva de emergência equivalente a pelo menos 6 meses dos seus custos fixos. Isso garante segurança para explorar o mercado de renda variável com tranquilidade."
+    },
+    {
+        tag: "Disciplina",
+        text: "Defina um limite de perda por operação. Disciplina é o que impede uma decisão emocional de virar um problema maior."
+    },
+    {
+        tag: "Contexto",
+        text: "Compare empresas usando fundamentos, mas também olhe o contexto do mercado. Bons números não eliminam riscos de curto prazo."
+    },
+    {
+        tag: "Registro",
+        text: "Registre suas decisões em um diário de investimento. Com o tempo, isso ajuda a entender padrões, erros e acertos."
+    }
 ];
 
 let currentTipIndex = 0;
 let currentSlide = 0;
 let activeFilter = "all";
+let tipAnimationTimer;
 
 const getVisibleVideoCards = () => videoCards.filter((card) => !card.classList.contains("is-hidden"));
 
@@ -114,6 +166,53 @@ updateBackToTopState();
 backToTopButton.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+const setActiveBenefit = (benefitKey) => {
+    const content = benefitContent[benefitKey];
+    if (!content) {
+        return;
+    }
+
+    benefitCards.forEach((card) => {
+        const isActive = card.dataset.benefit === benefitKey;
+        card.classList.toggle("is-active", isActive);
+        card.setAttribute("aria-pressed", String(isActive));
+    });
+
+    if (benefitLabel) {
+        benefitLabel.textContent = content.label;
+    }
+
+    if (benefitTitle) {
+        benefitTitle.textContent = content.title;
+    }
+
+    if (benefitDescription) {
+        benefitDescription.textContent = content.description;
+    }
+
+    if (benefitMetric) {
+        benefitMetric.textContent = content.metric;
+    }
+};
+
+benefitCards.forEach((card) => {
+    const activateCard = () => setActiveBenefit(card.dataset.benefit);
+
+    card.addEventListener("click", activateCard);
+    card.addEventListener("mouseenter", activateCard);
+    card.addEventListener("focus", activateCard);
+    card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            activateCard();
+        }
+    });
+});
+
+if (benefitCards.length > 0) {
+    setActiveBenefit(benefitCards[0].dataset.benefit);
+}
 
 const updateSliderButtons = () => {
     const visibleCards = getVisibleVideoCards();
@@ -220,17 +319,68 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-const renderTip = () => {
-    tipText.textContent = tips[currentTipIndex];
-    tipIndicator.textContent = `Dica ${currentTipIndex + 1} de ${tips.length}`;
+const renderTipDots = () => {
+    if (!tipDotsContainer) {
+        return;
+    }
+
+    tipDotsContainer.innerHTML = "";
+
+    tips.forEach((tip, index) => {
+        const dot = document.createElement("button");
+        dot.className = "dica-ponto";
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Mostrar dica ${index + 1}: ${tip.tag}`);
+        dot.addEventListener("click", () => setTipIndex(index));
+        tipDotsContainer.appendChild(dot);
+    });
 };
 
-tipButton.addEventListener("click", () => {
-    currentTipIndex = (currentTipIndex + 1) % tips.length;
-    renderTip();
-});
+const renderTip = () => {
+    const tip = tips[currentTipIndex];
 
-renderTip();
+    tipText.textContent = tip.text;
+    tipIndicator.textContent = `Dica ${currentTipIndex + 1} de ${tips.length}`;
+
+    if (tipTag) {
+        tipTag.textContent = tip.tag;
+    }
+
+    if (tipProgressBar) {
+        tipProgressBar.style.width = `${((currentTipIndex + 1) / tips.length) * 100}%`;
+    }
+
+    if (tipDotsContainer) {
+        Array.from(tipDotsContainer.children).forEach((dot, index) => {
+            const isActive = index === currentTipIndex;
+            dot.classList.toggle("is-active", isActive);
+            dot.setAttribute("aria-current", isActive ? "true" : "false");
+        });
+    }
+};
+
+const setTipIndex = (nextIndex, shouldAnimate = true) => {
+    currentTipIndex = (nextIndex + tips.length) % tips.length;
+    window.clearTimeout(tipAnimationTimer);
+
+    if (!shouldAnimate || !tipCard) {
+        renderTip();
+        return;
+    }
+
+    tipCard.classList.add("is-changing");
+    tipAnimationTimer = window.setTimeout(() => {
+        renderTip();
+        tipCard.classList.remove("is-changing");
+    }, 160);
+};
+
+tipButton.addEventListener("click", () => setTipIndex(currentTipIndex + 1));
+tipPreviousButton.addEventListener("click", () => setTipIndex(currentTipIndex - 1));
+tipNextButton.addEventListener("click", () => setTipIndex(currentTipIndex + 1));
+
+renderTipDots();
+setTipIndex(0, false);
 
 newsletterForm.addEventListener("submit", (event) => {
     event.preventDefault();

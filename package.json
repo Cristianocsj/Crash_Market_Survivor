@@ -1,0 +1,13 @@
+{
+  "name": "crash-market-survivor-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site estatico preparado para Firebase Hosting.",
+  "scripts": {
+    "firebase:login": "npx --yes firebase-tools login",
+    "firebase:use": "npx --yes firebase-tools use --add",
+    "firebase:serve": "npx --yes firebase-tools emulators:start --only hosting",
+    "firebase:preview": "npx --yes firebase-tools hosting:channel:deploy preview --expires 7d",
+    "firebase:deploy": "npx --yes firebase-tools deploy --only hosting"
+  }
+}

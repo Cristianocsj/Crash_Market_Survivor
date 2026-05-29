@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Floor is Bear Market | Crash Market Survivor</title>
+    <link rel="shortcut icon" href="../favicon/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="game.css">
+    <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.4.2/dist/pixi.min.js" defer></script>
+    <script src="game.js" defer></script>
+</head>
+<body>
+    <header class="game-topbar">
+        <a class="brand-link" href="../index.html#jogo" aria-label="Voltar para a seção do jogo">
+            <img src="../imagens/logo.png" alt="Cristian Financial Group">
+            <span>Crash Market Survivor</span>
+        </a>
+        <nav class="topbar-actions" aria-label="Navegação do jogo">
+            <a href="../index.html">Site</a>
+            <a href="../index.html#videos">Aulas</a>
+        </nav>
+    </header>
+
+    <main class="game-shell">
+        <section class="game-panel" aria-label="Arena The Floor is Bear Market">
+            <div class="hud-strip">
+                <div class="hud-item">
+                    <span>Pregão</span>
+                    <strong id="time-value">01:30</strong>
+                </div>
+                <div class="hud-item">
+                    <span>Patrimônio atual</span>
+                    <strong id="score-value">R$ 100.000</strong>
+                </div>
+                <div class="hud-item">
+                    <span>Posição atual</span>
+                    <strong id="height-value">0.0 m</strong>
+                </div>
+                <div class="hud-item">
+                    <span>Recorde local</span>
+                    <strong id="record-value">R$ 100.000</strong>
+                </div>
+            </div>
+
+            <div class="stage-wrap">
+                <div class="record-meter" aria-hidden="true">
+                    <span class="meter-label">Recorde</span>
+                    <span class="meter-track">
+                        <span id="record-fill"></span>
+                    </span>
+                    <span class="meter-label">Fundo</span>
+                </div>
+                <div id="game-stage" class="game-stage" tabindex="0" aria-label="Jogo 2D em PixiJS">
+                    <div id="game-loader" class="game-loader">Carregando pregão...</div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="side-panel">
+            <img class="game-art" src="assets/pregao-ui-art.png" alt="Arte arcade com arena de velas verdes e vermelhas">
+
+            <div class="mentor-card">
+                <span class="card-kicker">IA do pregão</span>
+                <h1>The Floor is Bear Market</h1>
+                <p id="mentor-message">
+                    A IA observa as velas. Verde pode virar oportunidade, vermelho cobra gestão de risco.
+                </p>
+            </div>
+
+            <div class="market-card">
+                <span class="card-kicker">Fase atual</span>
+                <strong id="phase-value">Abertura</strong>
+                <p>Use as altas como elevador e evite ficar preso nas velas em queda.</p>
+            </div>
+        </aside>
+    </main>
+
+    <div class="start-overlay is-open" id="start-overlay" role="dialog" aria-modal="true" aria-labelledby="start-title">
+        <div class="overlay-panel">
+            <img src="assets/pregao-ui-art.png" alt="" aria-hidden="true">
+            <div class="overlay-copy">
+                <span class="card-kicker">Simulador de reflexo e risco</span>
+                <h2 id="start-title">The Floor is Bear Market</h2>
+                <p>
+                    Suba nas velas verdes, escape das quedas vermelhas e empurre os traders IA para dominar o gráfico vivo.
+                </p>
+                <div class="key-row" aria-label="Controles">
+                    <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+                    <kbd>Setas</kbd><kbd>Espaço</kbd><kbd>Shift</kbd>
+                </div>
+                <button class="primary-action" type="button" id="start-game">TESTAR REFLEXOS NO PREGÃO</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="result-overlay" id="result-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="result-title">
+        <div class="overlay-panel compact">
+            <div class="overlay-copy">
+                <span class="card-kicker" id="result-reason">Pregão encerrado</span>
+                <h2 id="result-title">Patrimônio máximo acumulado</h2>
+                <strong class="final-score" id="final-score">R$ 100.000</strong>
+                <p id="result-message">A IA registrou sua melhor altitude no gráfico.</p>
+                <div class="result-actions">
+                    <button class="primary-action" type="button" id="restart-game">Nova rodada</button>
+                    <a class="secondary-action" href="../index.html#jogo">Voltar ao site</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
