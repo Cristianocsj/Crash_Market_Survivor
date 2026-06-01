@@ -11,7 +11,7 @@ Plataforma web de educação financeira com site institucional, aulas em vídeo,
 
 O projeto foi preparado como entrega publicável: a home apresenta a proposta da Cristian Financial Group, o jogo roda em `/game/`, as rotas antigas possuem compatibilidade e a configuração do Firebase Hosting já está pronta para preview e deploy.
 
-![Preview do jogo](stock-markets-site/game/assets/pregao-ui-art.png)
+![Preview do jogo](stock-markets-site/game/assets/pregao-ui-art2.jpg)
 
 ## O Que Chama Atenção
 
