@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Game | Cristian Financial Group</title>
+    <link rel="shortcut icon" href="../favicon/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="unity-game.css">
+    <script src="unity-game.js?v=20260606-uncompressed" defer></script>
+</head>
+<body>
+    <header class="unity-topbar">
+        <a class="brand-link" href="../index.html#jogo" aria-label="Voltar para o site">
+            <img src="../imagens/logo.png" alt="Logo Cristian Financial Group">
+            <span>Crash Market Survivor</span>
+        </a>
+        <nav class="topbar-actions" aria-label="Navegacao do jogo Unity">
+            <a href="../index.html">Site</a>
+            <a href="../game/">Jogo 2D</a>
+        </nav>
+    </header>
+
+    <main class="unity-page">
+        <section class="unity-panel" aria-label="Unity WebGL">
+            <div class="unity-heading">
+                <div>
+                    <span class="unity-kicker">Unity WebGL</span>
+                    <h1>Crash Market Survivor</h1>
+                </div>
+                <button class="focus-button" id="focus-game" type="button">Focar jogo</button>
+            </div>
+
+            <div class="unity-frame" id="unity-container" tabindex="-1">
+                <canvas id="unity-canvas" tabindex="0" aria-label="Tela do jogo Unity WebGL"></canvas>
+
+                <div class="unity-loader" id="unity-loading">
+                    <p id="unity-loading-text">Carregando Unity WebGL...</p>
+                    <div class="progress-track" aria-hidden="true">
+                        <span id="unity-progress-bar"></span>
+                    </div>
+                </div>
+
+                <div class="unity-warning" id="unity-warning" role="status" aria-live="polite"></div>
+            </div>
+
+            <div class="unity-controls" aria-label="Controles principais">
+                <span>WSAD</span>
+                <span>Espaco</span>
+                <span>Shift</span>
+            </div>
+            <p class="unity-hint">Segure <strong>Shift</strong> para correr dos zumbis.</p>
+        </section>
+    </main>
+</body>
+</html>
